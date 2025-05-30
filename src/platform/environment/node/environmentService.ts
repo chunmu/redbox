@@ -3,6 +3,7 @@ import { NativeParsedArgs } from "../common/argv";
 import { IProductService } from "@platform/product/productService";
 import { homedir } from "os";
 import { tmpdir } from "os";
+import { AbstractNativeEnvironmentService } from "../common/environmentService";
 
 export class NativeEnvironmentService extends AbstractNativeEnvironmentService {
 

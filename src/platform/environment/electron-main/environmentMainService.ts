@@ -7,5 +7,5 @@ export const IEnvironmentMainService = refineServiceDecorator<IEnvironmentServic
 export interface IEnvironmentMainService extends INativeEnvironmentService {}
 
 export class EnvironmentMainService extends NativeEnvironmentService implements IEnvironmentMainService {
-    _serviceBrand: undefined;
+    declare readonly _serviceBrand: undefined;
 }

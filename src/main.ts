@@ -23,11 +23,11 @@ Menu.setApplicationMenu(null);
 // 定义自己的权限scheme
 protocol.registerSchemesAsPrivileged([
 	{
-		scheme: 'svcode-webview',
+		scheme: 'redbox-webview',
 		privileges: { standard: true, secure: true, supportFetchAPI: true, corsEnabled: true, allowServiceWorkers: true, codeCache: true }
 	},
 	{
-		scheme: 'svcode-file',
+		scheme: 'redbox-file',
 		privileges: { secure: true, standard: true, supportFetchAPI: true, corsEnabled: true, codeCache: true }
 	}
 ]);
@@ -46,13 +46,13 @@ function parseCLIArgs(): NativeParsedArgs {
 }
 
 function getArgvConfigPath(): string {
-	const vscodePortable = process.env['SVCODE_PORTABLE'];
+	const vscodePortable = process.env['REDBOX_PORTABLE'];
 	if (vscodePortable) {
 		return path.join(vscodePortable, 'argv.json');
 	}
 
 	let dataFolderName = product.dataFolderName;
-	if (process.env['SVCODE_DEV']) {
+	if (process.env['REDBOX_DEV']) {
 		dataFolderName = `${dataFolderName}-dev`;
 	}
 
@@ -62,7 +62,7 @@ function getArgvConfigPath(): string {
 
 const args = parseCLIArgs();
 const argvConfig = configureCommandlineSwitchesSync(args);
-const userDataPath = getUserDataPath(args, product.nameShort ?? 'code-oss-dev');
+const userDataPath = getUserDataPath(args, product.nameShort ?? 'redbox-dev');
 
 
 function createDefaultArgvConfigSync(argvConfigPath: string): void {
@@ -75,10 +75,10 @@ function createDefaultArgvConfigSync(argvConfigPath: string): void {
 
 		// Default argv content
 		const defaultArgvConfigContent = [
-			'// NOTE: Changing this file requires a restart of SV Code.',
+			'// NOTE: Changing this file requires a restart of RedBox.',
 			'{',
 			'	// Use software rendering instead of hardware accelerated rendering.',
-			'	// This can help in cases where you see rendering issues in SV Code.',
+			'	// This can help in cases where you see rendering issues in RedBox.',
 			'	// "disable-hardware-acceleration": true',
 			'}'
 		];
@@ -265,7 +265,7 @@ function getCodeCachePath(): string | undefined {
 	}
 
 	// running out of sources
-	if (process.env['SVCODE_DEV']) {
+	if (process.env['REDBOX_DEV']) {
 		return undefined;
 	}
 

@@ -30,18 +30,18 @@ export function getUserDataPath(cliArgs: NativeParsedArgs, productName: string):
 function doGetUserDataPath(cliArgs: NativeParsedArgs, productName: string): string {
 
 	// 0. Running out of sources has a fixed productName
-	if (process.env['SVCODE_DEV']) {
-		productName = 'code-oss-dev';
+	if (process.env['REDBOX_DEV']) {
+		productName = 'redbox-dev';
 	}
 
 	// 1. Support portable mode
-	const portablePath = process.env['SVCODE_PORTABLE'];
+	const portablePath = process.env['REDBOX_PORTABLE'];
 	if (portablePath) {
 		return path.join(portablePath, 'user-data');
 	}
 
 	// 2. Support global VSCODE_APPDATA environment variable
-	let appDataPath = process.env['SVCODE_APPDATA'];
+	let appDataPath = process.env['REDBOX_APPDATA'];
 	if (appDataPath) {
 		return path.join(appDataPath, productName);
 	}

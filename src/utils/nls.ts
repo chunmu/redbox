@@ -13,30 +13,30 @@ async function doSetupNLS(): Promise<INLSConfiguration | undefined> {
 	let nlsConfig: INLSConfiguration | undefined = undefined;
 
 	let messagesFile: string | undefined;
-	if (process.env['SVCODE_NLS_CONFIG']) {
+	if (process.env['REDBOX_NLS_CONFIG']) {
 		try {
-			nlsConfig = JSON.parse(process.env['SVCODE_NLS_CONFIG']);
+			nlsConfig = JSON.parse(process.env['REDBOX_NLS_CONFIG']);
 			if (nlsConfig?.languagePack?.messagesFile) {
 				messagesFile = nlsConfig.languagePack.messagesFile;
 			} else if (nlsConfig?.defaultMessagesFile) {
 				messagesFile = nlsConfig.defaultMessagesFile;
 			}
 
-			globalThis._SVCODE_NLS_LANGUAGE = nlsConfig?.resolvedLanguage;
+			globalThis._REDBOX_NLS_LANGUAGE = nlsConfig?.resolvedLanguage;
 		} catch (e) {
-			console.error(`Error reading SVCODE_NLS_CONFIG from environment: ${e}`);
+			console.error(`Error reading REDBOX_NLS_CONFIG from environment: ${e}`);
 		}
 	}
 
 	if (
-		process.env['SVCODE_DEV'] ||	// no NLS support in dev mode
+		process.env['REDBOX_DEV'] ||	// no NLS support in dev mode
 		!messagesFile					// no NLS messages file
 	) {
 		return undefined;
 	}
 
 	try {
-		globalThis._SVCODE_NLS_MESSAGES = JSON.parse((await fs.promises.readFile(messagesFile)).toString());
+		globalThis._REDBOX_NLS_MESSAGES = JSON.parse((await fs.promises.readFile(messagesFile)).toString());
 	} catch (error) {
 		console.error(`Error reading NLS messages file ${messagesFile}: ${error}`);
 
@@ -52,7 +52,7 @@ async function doSetupNLS(): Promise<INLSConfiguration | undefined> {
 		// Fallback to the default message file to ensure english translation at least
 		if (nlsConfig?.defaultMessagesFile && nlsConfig.defaultMessagesFile !== messagesFile) {
 			try {
-				globalThis._SVCODE_NLS_MESSAGES = JSON.parse((await fs.promises.readFile(nlsConfig.defaultMessagesFile)).toString());
+				globalThis._REDBOX_NLS_MESSAGES = JSON.parse((await fs.promises.readFile(nlsConfig.defaultMessagesFile)).toString());
 			} catch (error) {
 				console.error(`Error reading default NLS messages file ${nlsConfig.defaultMessagesFile}: ${error}`);
 			}

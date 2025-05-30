@@ -1,0 +1,21 @@
+{
+	"version": "1.0.0",
+	"date": "2025-05-25",
+	"quality": "dev",
+	"commit": "1234567890",
+	"nameShort": "Code - OSS",
+	"nameLong": "Code - OSS",
+	"applicationName": "code-oss",
+	"dataFolderName": ".svcode",
+	"win32MutexName": "svcode",
+	"licenseName": "MIT",
+	"serverGreeting": [],
+	"serverLicense": [],
+	"serverLicensePrompt": "",
+	"serverApplicationName": "svcode-server-oss",
+	"serverDataFolderName": ".svcode-server-oss",
+	"tunnelApplicationName": "svcode-tunnel-oss",
+	"win32DirName": "SV Code",
+	"win32NameVersion": "SV Code",
+	"win32RegValueName": "SV Code"
+}

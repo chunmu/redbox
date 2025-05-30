@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "commonjs",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "outDir": "dist",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "paths": {
+      "@i18n": ["./src/i18n/index.ts"],
+      "@workbench": ["./src/workbench/index.ts"],
+      "@electron/*": ["./src/electron/*"],
+      "@base/*": ["./src/base/*"],
+      "@platform/*": ["./src/platform/*"],
+      "@utils/*": ["./src/utils/*"]
+    }
+  }
+}

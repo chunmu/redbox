@@ -6,6 +6,10 @@ export const INativeEnvironmentService = refineServiceDecorator<IEnvironmentServ
 
 export interface IEnvironmentService {
     _serviceBrand: undefined;
+
+    logLevel?: string;
+
+    verbose?: string;
 }
 
 export interface INativeEnvironmentService extends IEnvironmentService {}

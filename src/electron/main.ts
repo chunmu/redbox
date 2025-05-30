@@ -7,6 +7,7 @@ import product from '../../product.json'
 import { InstantiationService } from "@platform/instantiation/common/instantiationService";
 import { EnvironmentMainService, IEnvironmentMainService } from "@platform/environment/electron-main/environmentMainService";
 import { NativeParsedArgs } from "@platform/environment/common/argv";
+import { ConsoleMainLogger, getLogLevel, ILoggerService, ILogService } from '@platform/log/common/log';
 
 class CodeMain {
   main(): void {
@@ -38,6 +39,8 @@ class CodeMain {
     // 环境配置
     const environmentMainService = new EnvironmentMainService(this.resolveArgs(), productService);
     services.set(IEnvironmentMainService, environmentMainService);
+
+    const loggerService = new LoggerMainService(getLogLevel(environmentMainService), environmentMainService.logsHome);
 
     return [new InstantiationService(services, true)]
   }

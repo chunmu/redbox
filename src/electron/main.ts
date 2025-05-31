@@ -44,7 +44,7 @@ class CodeMain {
 
     return [new InstantiationService(services, true)]
   }
-
+ 
   private resolveArgs(): NativeParsedArgs {
 
 		// Parse arguments

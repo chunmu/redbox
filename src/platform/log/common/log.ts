@@ -1,7 +1,7 @@
 import { Event } from "@base/common/event";
 import { Disposable, IDisposable } from "@base/common/lifecycle";
 import { createDecorator } from "@platform/instantiation/common/instantiation";
-import { isNumber, isString } from '@base/common/types';
+import { isNumber, isString, Mutable } from '@base/common/types';
 import { URI } from '@base/common/uri';
 import { IEnvironmentService } from "@platform/environment/common/environment";
 import { ResourceMap } from "@base/common/map";
@@ -277,6 +277,8 @@ export function parseLogLevel(logLevel: string): LogLevel | undefined {
 	}
 	return undefined;
 }
+
+type LoggerEntry = { logger: ILogger | undefined; info: Mutable<ILoggerResource> };
 
 export abstract class AbstractLoggerService extends Disposable implements ILoggerService {
 

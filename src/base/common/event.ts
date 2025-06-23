@@ -3,14 +3,14 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { CancelablePromise } from './async.js';
-import { CancellationToken } from './cancellation.js';
+import { CancelablePromise } from './async';
+import { CancellationToken } from './cancellation';
 import { diffSets } from './collections';
-import { onUnexpectedError } from './errors.js';
-import { createSingleCallFunction } from './functional.js';
-import { combinedDisposable, Disposable, DisposableMap, DisposableStore, IDisposable, toDisposable } from './lifecycle.js';
+import { onUnexpectedError } from './errors';
+import { createSingleCallFunction } from './functional';
+import { combinedDisposable, Disposable, DisposableMap, DisposableStore, IDisposable, toDisposable } from './lifecycle';
 import { LinkedList } from './linkedList';
-import { IObservable, IObservableWithChange, IObserver } from './observable.js';
+import { IObservable, IObservableWithChange, IObserver } from './observable';
 import { StopWatch } from './stopwatch.js';
 import { MicrotaskDelay } from './symbols.js';
 
